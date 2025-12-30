@@ -17,7 +17,6 @@ type ClientConfig struct {
 	ProxyURL              string        `yaml:"proxy_url"`
 }
 
-// returns a default client config for debugging
 func DefaultClientConfig() ClientConfig {
 	return ClientConfig{
 		DialTimeout:           5 * time.Second,
