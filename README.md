@@ -31,5 +31,12 @@ func main() {
 	}
 	defer resp.Body.Close() // must
 	log.Print(resp)
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println(string(body))
 }
 ```
