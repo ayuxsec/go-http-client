@@ -11,7 +11,7 @@ import (
 
 func main() {
     cfg := client.DefaultClientConfig()
-    c.ProxyURL = "http://127.0.0.1:8080"
+    cfg.ProxyURL = "http://127.0.0.1:8080"
 	c, err := client.DefaultClientConfig().CreateNewClient()
 	if err != nil {
 		if errors.Is(err, client.ErrInvalidProxyURL) {
