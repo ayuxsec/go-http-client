@@ -16,11 +16,11 @@ func TestPost(t *testing.T) {
 		t.Fatal(err)
 	}
 	r := Request{
-		"https://example.com",
-		http.Header{
+		RawURL: "https://example.com",
+		Headers: http.Header{
 			"Accept": {"application/json", "text/plain"},
 		},
-		client,
+		HTTPClient: client,
 	}
 	resp, err := r.SendPost(strings.NewReader(`{data: "hello server"}`))
 	if err != nil {

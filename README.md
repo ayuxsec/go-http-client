@@ -22,7 +22,7 @@ func main() {
 	r := client.Request{
 		RawURL:  "https://api.github.com/markdown",
 		Headers: nil,
-		Client:  c,
+		HTTPClient:  c,
 	}
 
 	resp, err := r.SendPost(strings.NewReader(`{data: "hello server"}`))

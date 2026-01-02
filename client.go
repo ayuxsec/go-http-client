@@ -6,9 +6,9 @@ import (
 )
 
 type Request struct {
-	RawURL  string
-	Headers http.Header
-	Client  *http.Client
+	RawURL     string
+	Headers    http.Header
+	HTTPClient *http.Client
 }
 
 type Response struct {
@@ -19,7 +19,7 @@ type Response struct {
 
 // Note: caller MUST close Body
 func (r Request) SendPost(body io.Reader) (*Response, error) {
-	if r.Client == nil {
+	if r.HTTPClient == nil {
 		return &Response{}, ErrNilPtrClient
 	}
 
@@ -30,7 +30,7 @@ func (r Request) SendPost(body io.Reader) (*Response, error) {
 
 	req.Header = r.Headers.Clone()
 
-	resp, err := r.Client.Do(req)
+	resp, err := r.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
